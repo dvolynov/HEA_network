@@ -6,7 +6,7 @@ def plot3d(atoms):
     atom_colors = list(ATOM_TYPES.values())
     x, y, z, colors = [], [], [], []
 
-    fig = plt.figure()
+    fig = plt.figure(figsize=(10, 10))
     ax = plt.axes(projection='3d')
 
     for i, children in enumerate(atoms):

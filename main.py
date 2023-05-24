@@ -6,7 +6,7 @@ from output import plot3d
 
 def main():
 
-    atoms = distributuion(end = 1000, step = 100)
+    atoms = distributuion(end = 1000, step = 200)
 
     array = []
     for children in traversal(atoms, start=67):
