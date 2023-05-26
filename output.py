@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
-from config import ATOM_TYPES
+from config import ATOM_COLORS
 
 
 def plot3d(atoms):
-    atom_colors = list(ATOM_TYPES.values())
+    atom_colors = list(ATOM_COLORS.values())
     x, y, z, colors = [], [], [], []
 
     fig = plt.figure(figsize=(10, 10))
@@ -43,7 +43,7 @@ def plot3d(atoms):
 def only_points(atoms):
     x, y, z, colors = [], [], [], []
 
-    atom_colors = list(ATOM_TYPES.values())
+    atom_colors = list(ATOM_COLORS.values())
 
     for atom in atoms:
         x.append(atom.coords.x)
