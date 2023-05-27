@@ -4,11 +4,11 @@ from scipy.spatial.qhull import Delaunay
 
 def trans_matrix(atoms_origin):
     # Compute the Delaunay triangulation
-    points = np.array([(atom.x, atom.y, atom.z) for atom in atoms_origin])
+    points = np.array([(atom.coords.x, atom.coords.y, atom.coords.z) for atom in atoms_origin])
     tri = Delaunay(points)
 
     # Build the Markov chain
-    types = [atom.type for atom in atoms_origin]
+    types = [atom.type_id for atom in atoms_origin]
     unique_types = list(set(types))
     n_types = len(unique_types)
     transition_matrix = np.zeros((n_types, n_types))
