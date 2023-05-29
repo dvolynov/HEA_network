@@ -1,21 +1,18 @@
-from initializer import distributuion
-from traversal import traversal
-from output import plot3d
-from transition_matrix import trans_matrix
+from modules.initializer import Initializer
+from modules.transition_matrix import TransitionMatrix
+
+import pandas as pd
 
 
 
 def main():
+    config_df = pd.read_csv('config.csv', delimiter=";")
 
-    atoms = distributuion(end = 1000, step = 200)
+    initializer = Initializer(config_df)
+    atoms = initializer.distribute(end=1000, step=200)
 
-    array = []
-    for children in traversal(atoms, start=67):
-        array.append(children)
-
-    print(trans_matrix(atoms))
-
-    plot3d(array)
+    matrix = TransitionMatrix(atoms).data
+    print(matrix)
 
 
 if __name__ == "__main__":
