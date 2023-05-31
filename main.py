@@ -1,17 +1,20 @@
 from modules.initializer import Initializer
 from modules.transition_matrix import TransitionMatrix
+from modules.config import Config
 
-import pandas as pd
-
+import numpy as np
 
 
 def main():
-    config_df = pd.read_csv('config.csv', delimiter=";")
+    all_elements = np.load('all_elements.npy')
 
-    initializer = Initializer(config_df)
+    config = Config("Al2Fe3Mn5")
+
+    initializer = Initializer(config)
+
     atoms = initializer.distribute(end=1000, step=200)
 
-    matrix = TransitionMatrix(atoms).data
+    matrix = TransitionMatrix(atoms, config).data
     print(matrix)
 
 

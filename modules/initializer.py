@@ -4,8 +4,9 @@ from modules.atom import Atom
 
 class Initializer:
 
-    def __init__(self, df):
-        self.df = df
+    def __init__(self, config: object):
+        self.elements = config.elements
+        self.weights = config.weights 
 
     def distribute(self, start: int = 0, end: int = 10, step: int = 1):
         """
@@ -17,16 +18,13 @@ class Initializer:
 
         atoms: list[Atom] = []
 
-        names = list(self.df['Name'].values)
-        weights = list(self.df['Weight'].values)
-
         id = 1
         for z in range(start, end, step):
             for y in range(start, end, step):
                 for x in range(start, end, step):
 
-                    type = random.choices(names, weights=weights)[0]
-                    type_id = names.index(type)
+                    type = random.choices(self.elements, weights=self.weights)[0]
+                    type_id = self.elements.index(type)
                     
                     atom = Atom(id=id, type_id=type_id, coords=(x, y, z))
                     atoms.append(atom)
